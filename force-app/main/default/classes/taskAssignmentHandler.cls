@@ -1,6 +1,6 @@
 public class taskAssignmentHandler {
     public static List<User> randomizeUser(List<User> usrLst){
-        Integer currentIndex = listOfUsers.size();
+        Integer currentIndex = usrLst.size();
         User tempUser;
         Integer randomUserIndex;
         //List<User> randomUserList = new List<User>();

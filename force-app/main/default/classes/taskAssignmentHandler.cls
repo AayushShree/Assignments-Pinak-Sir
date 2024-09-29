@@ -5,7 +5,7 @@ public class taskAssignmentHandler {
         Integer randomUserIndex;
         //List<User> randomUserList = new List<User>();
         while (currentIndex != 0) {
-            Integer randomUserIndex = Math.floor(Math.random() * currentIndex).intValue();
+            randomUserIndex = Math.floor(Math.random() * currentIndex).intValue();
             currentIndex -= 1;
             //randomUserList.add(listOfUsers[randomUserIndex]);
             tempUser = usrLst[currentIndex];

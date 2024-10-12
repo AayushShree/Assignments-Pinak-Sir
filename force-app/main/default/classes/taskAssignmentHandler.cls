@@ -28,7 +28,8 @@ public class taskAssignmentHandler {
             	List<User> tskOwner = [Select Id, ManagerId 
                                        from User 
                                        Where Id IN (Select OwnerId From Account Where Id = :accId) 
-                                       AND ManagerId != NULL];
+                                       AND ManagerId != NULL
+                                       AND Manager.isActive = TRUE];
             	Map<Id,Id> uId2ManId = new Map<Id, Id>();
             	if(!tskOwner.isEmpty()){
                 	for(User u: tskOwner){
@@ -52,7 +53,10 @@ public class taskAssignmentHandler {
                 }
             }
             if(!(tskId.isEmpty() && accId.isEmpty())){
-                List<User> accOwners = [SELECT Id, ManagerId FROM User WHERE (ManagerId IN (SELECT OwnerId FROM Account WHERE Id = :accId) AND Manager.isActive = TRUE)];
+                List<User> accOwners = [SELECT Id, ManagerId 
+                                        FROM User 
+                                        WHERE (ManagerId IN (SELECT OwnerId FROM Account WHERE Id = :accId) 
+                                        AND Manager.isActive = TRUE)];
                 Map<Id, Id> accOwnerId2usrId = new Map<Id, Id>();
                 if (!accOwners.isEmpty()) {
                     List<User> randomizedUserLst = randomizeUser(accOwners);
